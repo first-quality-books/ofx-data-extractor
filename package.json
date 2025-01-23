@@ -35,15 +35,24 @@
   },
   "license": "MIT",
   "description": "A module written in TypeScript that provides a utility to extract data from an OFX file in Node.js and Browser",
+  "type": "module",
   "main": "dist/umd/bundle.min.js",
   "module": "dist/esm/index.min.js",
   "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.min.js",
+      "require": "./dist/umd/bundle.min.js",
+      "default": "./dist/esm/index.min.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "test": "jest tests/*.spec.ts --config jest.config.js",
-    "test:coverage": "jest tests/*.spec.ts --coverage --config jest.config.js",
+    "test": "jest tests/*.spec.ts --config jest.config.cjs",
+    "test:coverage": "jest tests/*.spec.ts --coverage --config jest.config.cjs",
     "build": "rollup --config",
     "start": "node dist/index.js",
     "format": "prettier --write \"src/**/*.ts\"",
