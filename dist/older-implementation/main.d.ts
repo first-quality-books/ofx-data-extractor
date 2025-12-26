@@ -1,0 +1,18 @@
+/// <reference types="node" />
+import { ExtractorConfig, MetaData } from '../@types/common';
+import { OfxResponse, OfxStructure } from '../@types/ofx/index';
+import { StatementTransaction } from '../@types/ofx/common';
+export declare class Ofx {
+    private extractor;
+    constructor(data: string, config?: ExtractorConfig);
+    getType(): import("../@types/common").Types;
+    static fromBuffer(data: Buffer): Ofx;
+    static fromBlob(blob: Blob): Promise<Ofx>;
+    config(config: ExtractorConfig): this;
+    getHeaders(): MetaData;
+    getBankTransferList(): StatementTransaction[];
+    getCreditCardTransferList(): StatementTransaction[];
+    getTransactionsSummary(): import("../@types/common").TransactionsSummary;
+    getContent(): OfxStructure;
+    toJson(): OfxResponse;
+}

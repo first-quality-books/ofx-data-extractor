@@ -1,0 +1,3 @@
+/// <reference types="node" />
+export declare function bufferToString(data: Buffer): string;
+export declare function blobToString(blob: Blob): Promise<string>;
